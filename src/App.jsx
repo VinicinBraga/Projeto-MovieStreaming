@@ -4,6 +4,8 @@ import Tmdb from "./Tmdb";
 import MovieRow from "./components/MovieRow";
 import FeaturedMovie from "./components/FeaturedMovie";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Loading from "./components/Loading";
 
 const App = () => {
   const [movieList, setMovieList] = useState([]);
@@ -29,7 +31,7 @@ const App = () => {
 
   useEffect(() => {
     const scrollListener = () => {
-      if (window.scrollY > 10) {
+      if (window.scrollY > 15) {
         setBlackHeader(true);
       } else {
         setBlackHeader(false);
@@ -51,6 +53,8 @@ const App = () => {
           <MovieRow key={key} title={item.title} items={item.items} />
         ))}
       </section>
+      <Footer />
+      <Loading list={movieList} />
     </div>
   );
 };
